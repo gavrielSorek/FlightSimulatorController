@@ -6,6 +6,11 @@ import android.widget.Button
 class ViewModel constructor(model :Model) {
     var ip: String = "IP"
     var port: String = "PORT"
+    var throttle :Float = 0.0F
+        set(value) {         // setter
+            field = value
+            model.setThrottle(value)
+        }
     lateinit var model: Model
 
     init {

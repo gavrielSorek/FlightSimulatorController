@@ -29,15 +29,14 @@ class MainActivity : AppCompatActivity() {
 //        findViewById<TextView>(R.id.port).apply {
 //            text = viewModel.port
 //        }
-        var seekBar = findViewById<SeekBar>(R.id.seekBar2)
+        var seekBar = findViewById<SeekBar>(R.id.throttleSeekBar)
 
         var connectText = findViewById<TextView>(R.id.connect)
 
 
         seekBar.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_MOVE) {
-                Log.d(TAG, "Moved , process data, Moved to :" + seekBar.progress)
-                seekBar.progress = seekBar.progress
+                viewModel.throttle = (seekBar.progress.toFloat() / 100)
                 connectText.text = seekBar.progress.toString()
                 return@OnTouchListener false
             }

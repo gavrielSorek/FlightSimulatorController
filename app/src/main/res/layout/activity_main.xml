@@ -52,27 +52,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/port" />
 
-    <SeekBar
-        android:id="@+id/seekBar2"
 
+    <com.example.flightsimulatorjoistick.VerticalSeekBar
+        android:id="@+id/throttleSeekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="182dp"
-        android:layout_height="381dp"
-        android:rotation="90"
-        android:rotationX="180"
+        android:layout_width="44dp"
+        android:layout_height="358dp"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="272dp" />
-
-    <SeekBar
-        android:id="@+id/seekBar8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleX="2"
-        android:scaleY="2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
 
 
-
+    <com.example.flightsimulatorjoistick.Joystick
+        android:layout_width="358dp"
+        android:layout_height="358dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/throttleSeekBar"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

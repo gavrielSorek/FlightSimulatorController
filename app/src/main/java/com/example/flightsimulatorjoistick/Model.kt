@@ -9,33 +9,37 @@ class Model {
     private lateinit var dataOutputStream: DataOutputStream
     private val executor = Executors.newSingleThreadExecutor()
     fun connect(ip: String,port: String) {
-        try{
-            this.socket = Socket(ip, port.toInt())
-            this.dataOutputStream = DataOutputStream(socket.getOutputStream())
+
+        executor.execute(Runnable {
+            try{
+
+                this.socket = Socket(ip, port.toInt())
+                this.dataOutputStream = DataOutputStream(socket.getOutputStream())
 
 //            dout.writeUTF("1")
 //            dout.flush()
 //            dout.close()
 //            soc.close()
-        }
-        catch (e:Exception){
-            e.printStackTrace()
-        }
+            }
+            catch (e:Exception){
+                e.printStackTrace()
+            }
+        })
     }
     fun setThrottle(value: Float) {
-        executor.execute(Runnable { dataOutputStream.writeUTF("set/controls/flight/current-engine/throttle $value \r\n")
-        dataOutputStream.flush()})
+        //executor.execute(Runnable { dataOutputStream.writeUTF("set /controls/flight/current-engine/throttle 1 \r\n")
+        //dataOutputStream.flush()})
     }
     fun setElevator(value: Float) {
-        executor.execute(Runnable { dataOutputStream.writeUTF("set/controls/flight/elevator $value \r\n")
+        executor.execute(Runnable { dataOutputStream.writeUTF("set /controls/flight/elevator $value \r\n")
             dataOutputStream.flush()})
     }
     fun setRudder(value: Float) {
-        executor.execute(Runnable { dataOutputStream.writeUTF("set/controls/flight/rudder $value \r\n")
+        executor.execute(Runnable { dataOutputStream.writeUTF("set /controls/flight/rudder $value \r\n")
             dataOutputStream.flush()})
     }
     fun setAileron(value: Float) {
-        executor.execute(Runnable { dataOutputStream.writeUTF("set/controls/flight/aileron $value \r\n")
+        executor.execute(Runnable { dataOutputStream.writeUTF("set /controls/flight/aileron $value \r\n")
             dataOutputStream.flush()})
     }
 }
