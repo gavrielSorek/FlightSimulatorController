@@ -11,6 +11,16 @@ class ViewModel constructor(model :Model) {
             field = value
             model.setThrottle(value)
         }
+    var aileron :Float = 0.0F
+        set(value) {         // setter
+            field = value
+            model.setAileron(value)
+        }
+    var elevator :Float = 0.0F
+        set(value) {         // setter
+            field = value
+            model.setElevator(value)
+        }
     lateinit var model: Model
 
     init {
@@ -20,6 +30,7 @@ class ViewModel constructor(model :Model) {
     fun connect(){
         //view.findViewById<Button>(R.id.connect).text = ip
         model.connect(ip,port)
+
     }
 
 }

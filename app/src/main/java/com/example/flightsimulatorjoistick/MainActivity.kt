@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.reflect.KFunction
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,13 +44,18 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "Touched , Progress :" + seekBar.progress)
             true
         })
-
-
+        KFunction<Any>.
+        var joystick = findViewById<Joystick>(R.id.joystick)
+        joystick.onChange = joystickOnChange(0,0)
     }
 
     private fun connectClicked(view: View) {
         viewModel.ip = findViewById<TextView>(R.id.ip).text.toString()
         viewModel.port = findViewById<TextView>(R.id.port).text.toString()
         viewModel.connect()
+    }
+    private fun joystickOnChange(aileron: Float, elevator: Float): KFunction<Any>? {
+        viewModel.aileron = aileron
+        viewModel.elevator = elevator
     }
 }

@@ -3,20 +3,27 @@ package com.example.flightsimulatorjoistick
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import kotlin.reflect.KFunction
 
 
 class Joystick : View {
     private var drawPaint: Paint? = null
 
-    var radius = 300
-    var xPoint = 0
-    var yPoint = 0
+    var radius = width/4
+    var xPoint = width/2
+    var yPoint = height/2
     var xAlias : Float= 0f
     var yAlias : Float= 0f
+    //var onChange : KFunction<Any>? = null
+    var paramsHolder : Array<out Any?> ?= null
+    private var onChange : (param1 :Float, param2:Float) -> Unit = {}
+
+    fun joystickChangedAddFunction(func :Unit) {
+        //onChange = func;
+    }
+
     constructor(context: Context?) : super(context!!) {
         radius = width/4
         xPoint = width/2
@@ -45,9 +52,29 @@ class Joystick : View {
         setMeasuredDimension(measuredHeight, measuredWidth)
     }
 
+    fun validXPos(xPosition: Float): Float {
+        if(xPosition < width/4) {
+            return width/4.toFloat();
+        }
+        else if(xPosition > width - width/4) {
+            return (width - width/4).toFloat();
+        } else {
+            return xPosition;
+        }
+    }
+    fun validYPos(yPosition: Float): Float {
+        if(yPosition < width/4) {
+            return width/4.toFloat();
+        }
+        else if(yPosition > height - width/4) {
+            return (width - width/4).toFloat();
+        } else {
+            return yPosition;
+        }
+    }
     override fun onDraw(c: Canvas) {
         setupPaint()
-        drawPaint?.let { c.drawCircle((width/2 + xAlias).toFloat(), (height/2 + yAlias).toFloat(),width/4.toFloat(), it) };
+        drawPaint?.let { c.drawCircle((validXPos(width/2 + xAlias)).toFloat(), (validYPos(height/2 + yAlias)).toFloat(),width/4.toFloat(), it) };
 
         super.onDraw(c)
     }
@@ -57,22 +84,38 @@ class Joystick : View {
             return false
         }
         when (event.action) {
-            MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE, MotionEvent.ACTION_UP -> {
+            MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
                 var i = 0
-                //i = max - (max * event.y / height).toInt()
-                //progress = i
-               // Log.i("Progress", progress.toString() + "")
                 onSizeChanged(width, height, 0, 0)
-                //xAlias = min(event.getX() - (width/2), width/4)
-                var w = event.getX();
-                var h = event.getY()
-                println("width: " + w + " height: " + h  )
-
+                xAlias = event.getX() - width/2
+                yAlias = event.getY() - height/2
+                paramsHolder = arrayOf<Float>(convertToRatioX(xAlias), convertToRatioX(yAlias))
+                if(onChange!= null) {
+                    onChange?.call(*paramsHolder!!)
+                }
+                invalidate()
             }
             MotionEvent.ACTION_CANCEL -> {
             }
+            MotionEvent.ACTION_UP -> {
+                xAlias = 0F
+                yAlias = 0F
+                paramsHolder = arrayOf<Float>(convertToRatioX(xAlias), convertToRatioX(yAlias))
+                if(onChange!= null) {
+                    onChange?.call(*paramsHolder!!)
+                }
+                invalidate()
+            }
         }
         return true
+    }
+    private fun convertToRatioX(xPos: Float): Float {
+       var currentXPos = validXPos(xPos + width/2)
+       return (currentXPos - width/2)/(width/4)
+    }
+    private fun convertToRatioY(yPos: Float): Float  {
+        var currentYPos = validYPos(yPos + height/2)
+        return (currentYPos - height/2)/(height/2 - width/4)
     }
     private fun setupPaint() {
         drawPaint = Paint()
