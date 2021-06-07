@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.connect).setOnClickListener{
             connectClicked(it)
@@ -57,16 +59,23 @@ class MainActivity : AppCompatActivity() {
         })
 
 
+
+
     }
 
     private fun connectClicked(view: View) {
-        viewModel.ip = findViewById<TextView>(R.id.ip).text.toString()
-        viewModel.port = findViewById<TextView>(R.id.port).text.toString()
+
+
         viewModel.connect()
+
+
     }
     private fun joystickOnChange(aileron: Float, elevator: Float) {
+
         viewModel.aileron = aileron
         viewModel.elevator = elevator
         println("ailron is: ${aileron} elevator is: ${elevator}")
+
+
     }
 }

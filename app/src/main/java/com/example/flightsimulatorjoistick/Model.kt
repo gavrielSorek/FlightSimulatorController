@@ -12,6 +12,7 @@ class Model {
 
         executor.execute(Runnable {
             try{
+                println("ip ${ip}, port: ${port}")
 
                 this.socket = Socket(ip, port.toInt())
                 this.dataOutputStream = DataOutputStream(socket.getOutputStream())
