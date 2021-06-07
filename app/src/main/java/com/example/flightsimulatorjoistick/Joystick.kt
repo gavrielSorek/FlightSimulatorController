@@ -9,13 +9,14 @@ import kotlin.reflect.KFunction
 
 
 class Joystick : View {
-    private var drawPaint: Paint? = null
 
     var radius :Float = width/4F
     var xCenter :Float= width/2F
     var yCenter :Float= height/2F
     var xAlias : Float= 0f
     var yAlias : Float= 0f
+    lateinit var paintLine :Paint;
+    lateinit var paintCircle :Paint;
     //var onChange : KFunction<Any>? = null
     //var paramsHolder : Array<out Any?> ?= null
     //hold observer that execute when joystick moves
@@ -29,6 +30,7 @@ class Joystick : View {
         radius = width/6F
         xCenter = width/2F
         yCenter = height/2F
+        setupPaint()
     }
     constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
         context!!,
@@ -37,11 +39,13 @@ class Joystick : View {
     ) {
     radius = width/6F
     xCenter = width/2F
-    yCenter = height/2F}
+    yCenter = height/2F
+        setupPaint()}
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {
         radius = width/6F
         xCenter = width/2F
         yCenter = height/2F
+        setupPaint()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -78,9 +82,10 @@ class Joystick : View {
         }
     }
     override fun onDraw(c: Canvas) {
-        setupPaint()
-        drawPaint?.let { c.drawCircle((validXPos(xCenter + xAlias)).toFloat(), (validYPos(yCenter + yAlias)).toFloat(),radius.toFloat(), it) };
-
+        val xJoystick = validXPos(xCenter + xAlias)
+        val yJoystick = validYPos(yCenter + yAlias)
+        c.drawLine(xJoystick,yJoystick, xCenter, yCenter, paintLine)
+        c.drawCircle(xJoystick,yJoystick,radius, paintCircle)
         super.onDraw(c)
     }
 
@@ -125,13 +130,22 @@ class Joystick : View {
         return (currentYPos - yCenter)/(yCenter - radius)
     }
     private fun setupPaint() {
-        drawPaint = Paint()
-        drawPaint!!.setColor(Color.BLUE)
-        drawPaint!!.setAntiAlias(true)
-        drawPaint!!.setStrokeWidth(5F)
-        drawPaint!!.setStyle(Paint.Style.FILL_AND_STROKE)
-        drawPaint!!.setStrokeJoin(Paint.Join.ROUND)
-        drawPaint!!.setStrokeCap(Paint.Cap.ROUND)
+        paintCircle = Paint()
+        paintCircle!!.setColor(Color.BLUE)
+        paintCircle!!.setAntiAlias(true)
+        paintCircle!!.setStrokeWidth(5F)
+        paintCircle!!.setStyle(Paint.Style.FILL_AND_STROKE)
+        paintCircle!!.setStrokeJoin(Paint.Join.ROUND)
+        paintCircle!!.setStrokeCap(Paint.Cap.ROUND)
+
+        paintLine = Paint()
+        paintLine!!.setColor(Color.BLACK)
+        paintLine!!.setAntiAlias(true)
+        paintLine!!.setStrokeWidth(10F)
+        paintLine!!.setStyle(Paint.Style.FILL_AND_STROKE)
+        paintLine!!.setStrokeJoin(Paint.Join.ROUND)
+        paintLine!!.setStrokeCap(Paint.Cap.ROUND)
     }
+
 }
 

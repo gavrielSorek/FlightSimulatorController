@@ -34,7 +34,7 @@ class Model {
                 dataOutputStream.writeUTF("set /controls/flight/current-engine/throttle 1 \r\n")
                 dataOutputStream.flush()
             } catch (ex: Exception) {
-                println("exception")
+                println("exception: ${ex.message}")
             }
         })
     }

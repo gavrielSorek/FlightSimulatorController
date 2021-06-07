@@ -11,6 +11,11 @@ class ViewModel constructor(model :Model) {
             field = value
             model.setThrottle(value)
         }
+    var rudder :Float = 0.0F
+        set(value) {         // setter
+            field = value
+            model.setRudder(value)
+        }
     var aileron :Float = 0.0F
         set(value) {         // setter
             field = value

@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         DataBindingUtil.setContentView<ActivityMainBinding>(
             this, R.layout.activity_main
         ).apply {
@@ -31,9 +32,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        findViewById<Button>(R.id.connect).setOnClickListener{
-            connectClicked(it)
-        }
+
         //binding
 //        findViewById<TextView>(R.id.ip).apply {
 //            text = viewModel.ip
@@ -42,13 +41,11 @@ class MainActivity : AppCompatActivity() {
 //            text = viewModel.port
 //        }
         var throttleSeekBar = findViewById<SeekBar>(R.id.throttleSeekBar)
-        var connectText = findViewById<TextView>(R.id.connect)
-
         //throttle listener
         throttleSeekBar.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_MOVE) {
                 viewModel.throttle = (throttleSeekBar.progress.toFloat() / 100)
-                connectText.text = throttleSeekBar.progress.toString()
+                //connectText.text = throttleSeekBar.progress.toString()
                 return@OnTouchListener false
             }
             Log.d(TAG, "Touched , Progress :" + throttleSeekBar.progress)
@@ -61,21 +58,11 @@ class MainActivity : AppCompatActivity() {
         var rudderSeekBar = findViewById<SeekBar>(R.id.RudderSeekBar)
         rudderSeekBar.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_MOVE) {
-                viewModel.throttle = (rudderSeekBar.progress.toFloat() / 100)
+                viewModel.rudder = (rudderSeekBar.progress.toFloat() / 100)
                 return@OnTouchListener false
             }
             true
         })
-
-
-
-
-    }
-
-    private fun connectClicked(view: View) {
-
-
-        viewModel.connect()
 
 
     }
