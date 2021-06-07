@@ -44,9 +44,8 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "Touched , Progress :" + seekBar.progress)
             true
         })
-        KFunction<Any>.
         var joystick = findViewById<Joystick>(R.id.joystick)
-        joystick.onChange = joystickOnChange(0,0)
+        joystick.joystickChangedAddFunction(::joystickOnChange)
     }
 
     private fun connectClicked(view: View) {

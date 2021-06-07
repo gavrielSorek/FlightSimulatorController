@@ -17,11 +17,12 @@ class Joystick : View {
     var xAlias : Float= 0f
     var yAlias : Float= 0f
     //var onChange : KFunction<Any>? = null
-    var paramsHolder : Array<out Any?> ?= null
-    private var onChange : (param1 :Float, param2:Float) -> Unit = {}
+    //var paramsHolder : Array<out Any?> ?= null
+    //hold observer that execute when joystick moves
+    private  var onChange : (param1 :Float, param2:Float) -> Unit = { fl: Float, fl1: Float -> }
 
-    fun joystickChangedAddFunction(func :Unit) {
-        //onChange = func;
+    fun joystickChangedAddFunction(func :(param1 :Float, param2:Float) -> Unit) {
+        onChange = func;
     }
 
     constructor(context: Context?) : super(context!!) {
@@ -89,10 +90,7 @@ class Joystick : View {
                 onSizeChanged(width, height, 0, 0)
                 xAlias = event.getX() - width/2
                 yAlias = event.getY() - height/2
-                paramsHolder = arrayOf<Float>(convertToRatioX(xAlias), convertToRatioX(yAlias))
-                if(onChange!= null) {
-                    onChange?.call(*paramsHolder!!)
-                }
+                onChange(convertToRatioX(xAlias), convertToRatioX(yAlias))
                 invalidate()
             }
             MotionEvent.ACTION_CANCEL -> {
@@ -100,10 +98,7 @@ class Joystick : View {
             MotionEvent.ACTION_UP -> {
                 xAlias = 0F
                 yAlias = 0F
-                paramsHolder = arrayOf<Float>(convertToRatioX(xAlias), convertToRatioX(yAlias))
-                if(onChange!= null) {
-                    onChange?.call(*paramsHolder!!)
-                }
+                onChange(convertToRatioX(xAlias), convertToRatioX(yAlias))
                 invalidate()
             }
         }
