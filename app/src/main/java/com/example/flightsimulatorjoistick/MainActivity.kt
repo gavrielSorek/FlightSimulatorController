@@ -30,22 +30,33 @@ class MainActivity : AppCompatActivity() {
 //        findViewById<TextView>(R.id.port).apply {
 //            text = viewModel.port
 //        }
-        var seekBar = findViewById<SeekBar>(R.id.throttleSeekBar)
-
+        var throttleSeekBar = findViewById<SeekBar>(R.id.throttleSeekBar)
         var connectText = findViewById<TextView>(R.id.connect)
 
-
-        seekBar.setOnTouchListener(OnTouchListener { v, event ->
+        //throttle listener
+        throttleSeekBar.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_MOVE) {
-                viewModel.throttle = (seekBar.progress.toFloat() / 100)
-                connectText.text = seekBar.progress.toString()
+                viewModel.throttle = (throttleSeekBar.progress.toFloat() / 100)
+                connectText.text = throttleSeekBar.progress.toString()
                 return@OnTouchListener false
             }
-            Log.d(TAG, "Touched , Progress :" + seekBar.progress)
+            Log.d(TAG, "Touched , Progress :" + throttleSeekBar.progress)
             true
         })
         var joystick = findViewById<Joystick>(R.id.joystick)
         joystick.joystickChangedAddFunction(::joystickOnChange)
+
+        //rudder
+        var rudderSeekBar = findViewById<SeekBar>(R.id.RudderSeekBar)
+        rudderSeekBar.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_MOVE) {
+                viewModel.throttle = (rudderSeekBar.progress.toFloat() / 100)
+                return@OnTouchListener false
+            }
+            true
+        })
+
+
     }
 
     private fun connectClicked(view: View) {

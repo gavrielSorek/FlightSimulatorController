@@ -5,19 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/openScreenColor"
+    android:scrollbarStyle="outsideInset"
     tools:context=".MainActivity">
 
+    
     <EditText
         android:id="@+id/ip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:gravity="center_horizontal|center_vertical"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:singleLine="true"
         android:text="IP"
-        android:gravity="center_horizontal|center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -33,9 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:gravity="center_horizontal|center_vertical"
         android:inputType="textPersonName"
         android:text="PORT"
-        android:gravity="center_horizontal|center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,12 +71,25 @@
 
     <com.example.flightsimulatorjoistick.Joystick
         android:id="@+id/joystick"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/throttleSeekBar"
         tools:ignore="MissingConstraints" />
+
+    <SeekBar
+        android:id="@+id/RudderSeekBar"
+        style="@android:style/Widget.Material.SeekBar.Discrete"
+        android:layout_width="403dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="16dp"
+        android:max="100"
+        android:progress="50"
+        android:rotationX="0"
+        app:layout_constraintBottom_toTopOf="@+id/joystick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
