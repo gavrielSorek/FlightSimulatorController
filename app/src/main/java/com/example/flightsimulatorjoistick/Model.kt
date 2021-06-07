@@ -27,6 +27,7 @@ class Model {
             }
         })
     }
+
     fun setThrottle(value: Float) {
 
         executor.execute(Runnable {
