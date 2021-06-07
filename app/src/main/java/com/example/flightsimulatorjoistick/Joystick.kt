@@ -26,7 +26,7 @@ class Joystick : View {
     }
 
     constructor(context: Context?) : super(context!!) {
-        radius = width/4F
+        radius = width/6F
         xCenter = width/2F
         yCenter = height/2F
     }
@@ -35,17 +35,17 @@ class Joystick : View {
         attrs,
         defStyle
     ) {
-    radius = width/4F
+    radius = width/6F
     xCenter = width/2F
     yCenter = height/2F}
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {
-        radius = width/4F
+        radius = width/6F
         xCenter = width/2F
         yCenter = height/2F
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        radius = width/4F
+        radius = width/6F
         xCenter = width/2F
         yCenter = height/2F
         super.onSizeChanged(h, w, oldh, oldw)
@@ -72,7 +72,7 @@ class Joystick : View {
             return radius;
         }
         else if(yPosition > height - radius) {
-            return (width - radius);
+            return (height - radius);
         } else {
             return yPosition;
         }
@@ -86,7 +86,7 @@ class Joystick : View {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         //validate radius and circle center
-        radius = width/4F
+        radius = width/6F
         xCenter = width/2F
         yCenter = height/2F
         if (!isEnabled) {
@@ -121,6 +121,7 @@ class Joystick : View {
     }
     private fun convertToRatioY(yPos: Float): Float  {
         var currentYPos = validYPos(yPos + yCenter)
+        //println("currentYPos: ${currentYPos}, yCenter: ${yCenter}, radius: ${radius}")
         return (currentYPos - yCenter)/(yCenter - radius)
     }
     private fun setupPaint() {

@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/openScreenColor"
     android:scrollbarStyle="outsideInset"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <data>
+        <variable
 
-    
+
+            />
+    </data>>
+
     <EditText
         android:id="@+id/ip"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:gravity="center_horizontal|center_vertical"
+        android:hint="IP"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:singleLine="true"
-        android:text="IP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -31,13 +37,13 @@
 
     <EditText
         android:id="@+id/port"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="center_horizontal|center_vertical"
         android:inputType="textPersonName"
-        android:text="PORT"
+        android:hint="PORT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,44 +51,18 @@
 
     <Button
         android:id="@+id/connect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="324dp"
+        android:layout_height="35dp"
+        android:layout_margin="43dp"
+        android:gravity="center"
         android:text="connect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/port" />
 
-
-    <com.example.flightsimulatorjoistick.VerticalSeekBar
-        android:id="@+id/throttleSeekBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="44dp"
-        android:layout_height="358dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
-
-
-    <com.example.flightsimulatorjoistick.Joystick
-        android:id="@+id/joystick"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_marginBottom="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/throttleSeekBar"
-        tools:ignore="MissingConstraints" />
-
     <SeekBar
         android:id="@+id/RudderSeekBar"
-        style="@android:style/Widget.Material.SeekBar.Discrete"
         android:layout_width="403dp"
         android:layout_height="79dp"
         android:layout_marginBottom="16dp"
@@ -92,4 +72,31 @@
         app:layout_constraintBottom_toTopOf="@+id/joystick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+        <com.example.flightsimulatorjoistick.VerticalSeekBar
+            android:id="@+id/throttleSeekBar"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.882"
+            android:layout_marginBottom="8dp"/>
+
+        <com.example.flightsimulatorjoistick.Joystick
+            android:id="@+id/joystick"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+    </LinearLayout>>
+    </LinearLayout>
