@@ -46,7 +46,6 @@ class VerticalSeekBar : androidx.appcompat.widget.AppCompatSeekBar {
                 var i = 0
                 i = max - (max * event.y / height).toInt()
                 progress = i
-                Log.i("Progress", progress.toString() + "")
                 onSizeChanged(width, height, 0, 0)
             }
             MotionEvent.ACTION_CANCEL -> {

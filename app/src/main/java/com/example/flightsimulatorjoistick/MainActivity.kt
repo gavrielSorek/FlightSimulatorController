@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
                 //connectText.text = throttleSeekBar.progress.toString()
                 return@OnTouchListener false
             }
-            Log.d(TAG, "Touched , Progress :" + throttleSeekBar.progress)
             true
         })
         var joystick = findViewById<Joystick>(R.id.joystick)
@@ -58,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         var rudderSeekBar = findViewById<SeekBar>(R.id.RudderSeekBar)
         rudderSeekBar.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_MOVE) {
-                viewModel.rudder = (rudderSeekBar.progress.toFloat() / 100)
+                viewModel.rudder = ((rudderSeekBar.progress.toFloat() / 50)-1)
                 return@OnTouchListener false
             }
             true
@@ -69,8 +68,8 @@ class MainActivity : AppCompatActivity() {
     private fun joystickOnChange(aileron: Float, elevator: Float) {
 
         viewModel.aileron = aileron
-        viewModel.elevator = elevator
-        println("ailron is: ${aileron} elevator is: ${elevator}")
+        viewModel.elevator = -1*elevator
+       // println("ailron is: ${aileron} elevator is: ${elevator}")
 
 
     }
