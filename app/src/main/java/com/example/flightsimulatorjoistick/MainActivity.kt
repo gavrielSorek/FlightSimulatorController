@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.example.flightsimulatorjoistick.databinding.ActivityMainBinding
 import kotlin.reflect.KFunction
 
 
@@ -19,9 +21,16 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         setContentView(R.layout.activity_main)
+        DataBindingUtil.setContentView<ActivityMainBinding>(
+            this, R.layout.activity_main
+        ).apply {
+            this.setLifecycleOwner(this@MainActivity)
+            this.viewmodel = viewModel
+        }
+
+
+
         findViewById<Button>(R.id.connect).setOnClickListener{
             connectClicked(it)
         }
