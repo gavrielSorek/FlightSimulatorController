@@ -21,25 +21,52 @@ class Model {
 //            dout.close()
 //            soc.close()
             }
-            catch (e:Exception){
-                e.printStackTrace()
+            catch (ex: Exception){
+                println("exception")
             }
         })
     }
     fun setThrottle(value: Float) {
-        //executor.execute(Runnable { dataOutputStream.writeUTF("set /controls/flight/current-engine/throttle 1 \r\n")
-        //dataOutputStream.flush()})
+
+        executor.execute(Runnable {
+            try {
+                dataOutputStream.writeUTF("set /controls/flight/current-engine/throttle 1 \r\n")
+                dataOutputStream.flush()
+            } catch (ex: Exception) {
+                println("exception")
+            }
+        })
     }
     fun setElevator(value: Float) {
-        executor.execute(Runnable { dataOutputStream.writeUTF("set /controls/flight/elevator $value \r\n")
-            dataOutputStream.flush()})
+
+        executor.execute(Runnable {
+            try {
+                dataOutputStream.writeUTF("set /controls/flight/elevator $value \r\n")
+                dataOutputStream.flush()
+            } catch (ex: Exception) {
+                println("exception")
+            }
+        })
     }
+
     fun setRudder(value: Float) {
-        executor.execute(Runnable { dataOutputStream.writeUTF("set /controls/flight/rudder $value \r\n")
-            dataOutputStream.flush()})
+        executor.execute(Runnable {
+            try {
+                dataOutputStream.writeUTF("set /controls/flight/rudder $value \r\n")
+                dataOutputStream.flush()
+            } catch (ex: Exception) {
+                println("exception")
+            }
+        })
+
     }
     fun setAileron(value: Float) {
-        executor.execute(Runnable { dataOutputStream.writeUTF("set /controls/flight/aileron $value \r\n")
-            dataOutputStream.flush()})
+
+        try {
+            dataOutputStream.writeUTF("set /controls/flight/aileron $value \r\n")
+            dataOutputStream.flush()
+        } catch (ex: Exception) {
+            println("exception")
+        }
     }
 }

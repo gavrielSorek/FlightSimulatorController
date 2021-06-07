@@ -53,8 +53,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.port = findViewById<TextView>(R.id.port).text.toString()
         viewModel.connect()
     }
-    private fun joystickOnChange(aileron: Float, elevator: Float): KFunction<Any>? {
+    private fun joystickOnChange(aileron: Float, elevator: Float) {
         viewModel.aileron = aileron
         viewModel.elevator = elevator
+        println("ailron is: ${aileron} elevator is: ${elevator}")
     }
 }

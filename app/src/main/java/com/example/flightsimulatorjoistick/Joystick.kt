@@ -11,9 +11,9 @@ import kotlin.reflect.KFunction
 class Joystick : View {
     private var drawPaint: Paint? = null
 
-    var radius = width/4
-    var xPoint = width/2
-    var yPoint = height/2
+    var radius :Float = width/4F
+    var xCenter :Float= width/2F
+    var yCenter :Float= height/2F
     var xAlias : Float= 0f
     var yAlias : Float= 0f
     //var onChange : KFunction<Any>? = null
@@ -26,24 +26,28 @@ class Joystick : View {
     }
 
     constructor(context: Context?) : super(context!!) {
-        radius = width/4
-        xPoint = width/2
-        yPoint = height/2
+        radius = width/4F
+        xCenter = width/2F
+        yCenter = height/2F
     }
     constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
         context!!,
         attrs,
         defStyle
-    ) {radius = width/4
-    xPoint = width/2
-    yPoint = height/2}
+    ) {
+    radius = width/4F
+    xCenter = width/2F
+    yCenter = height/2F}
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {
-        radius = width/4
-        xPoint = width/2
-        yPoint = height/2
+        radius = width/4F
+        xCenter = width/2F
+        yCenter = height/2F
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        radius = width/4F
+        xCenter = width/2F
+        yCenter = height/2F
         super.onSizeChanged(h, w, oldh, oldw)
     }
 
@@ -54,43 +58,47 @@ class Joystick : View {
     }
 
     fun validXPos(xPosition: Float): Float {
-        if(xPosition < width/4) {
-            return width/4.toFloat();
+        if(xPosition < radius) {
+            return radius;
         }
-        else if(xPosition > width - width/4) {
-            return (width - width/4).toFloat();
+        else if(xPosition > width - radius) {
+            return (width - radius);
         } else {
             return xPosition;
         }
     }
     fun validYPos(yPosition: Float): Float {
-        if(yPosition < width/4) {
-            return width/4.toFloat();
+        if(yPosition < radius) {
+            return radius;
         }
-        else if(yPosition > height - width/4) {
-            return (width - width/4).toFloat();
+        else if(yPosition > height - radius) {
+            return (width - radius);
         } else {
             return yPosition;
         }
     }
     override fun onDraw(c: Canvas) {
         setupPaint()
-        drawPaint?.let { c.drawCircle((validXPos(width/2 + xAlias)).toFloat(), (validYPos(height/2 + yAlias)).toFloat(),width/4.toFloat(), it) };
+        drawPaint?.let { c.drawCircle((validXPos(xCenter + xAlias)).toFloat(), (validYPos(yCenter + yAlias)).toFloat(),radius.toFloat(), it) };
 
         super.onDraw(c)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        //validate radius and circle center
+        radius = width/4F
+        xCenter = width/2F
+        yCenter = height/2F
         if (!isEnabled) {
             return false
         }
         when (event.action) {
             MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
                 var i = 0
-                onSizeChanged(width, height, 0, 0)
-                xAlias = event.getX() - width/2
-                yAlias = event.getY() - height/2
-                onChange(convertToRatioX(xAlias), convertToRatioX(yAlias))
+                //onSizeChanged(width, height, 0, 0)
+                xAlias = event.getX() - xCenter
+                yAlias = event.getY() - yCenter
+                onChange(convertToRatioX(xAlias), convertToRatioY(yAlias))
                 invalidate()
             }
             MotionEvent.ACTION_CANCEL -> {
@@ -98,19 +106,22 @@ class Joystick : View {
             MotionEvent.ACTION_UP -> {
                 xAlias = 0F
                 yAlias = 0F
-                onChange(convertToRatioX(xAlias), convertToRatioX(yAlias))
+                onChange(0F, 0F) //the circle returned to center
                 invalidate()
             }
         }
         return true
     }
+    //convert to number in range [-1,1] accordingly to xPosition
     private fun convertToRatioX(xPos: Float): Float {
-       var currentXPos = validXPos(xPos + width/2)
-       return (currentXPos - width/2)/(width/4)
+
+       var currentXPos = validXPos(xPos + xCenter)
+        //println("currentXPos: ${currentXPos}, xCenter: ${xCenter}, radius: ${radius}")
+       return (currentXPos - xCenter)/(xCenter - radius)
     }
     private fun convertToRatioY(yPos: Float): Float  {
-        var currentYPos = validYPos(yPos + height/2)
-        return (currentYPos - height/2)/(height/2 - width/4)
+        var currentYPos = validYPos(yPos + yCenter)
+        return (currentYPos - yCenter)/(yCenter - radius)
     }
     private fun setupPaint() {
         drawPaint = Paint()
