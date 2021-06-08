@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.flightsimulatorjoistick.ViewModel" />
+            type="com.example.flightsimulatorcontroller.ViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="match_parent"
@@ -23,97 +23,99 @@
             tools:layout_editor_absoluteY="1dp"
             >
 
-                <EditText
-                    android:id="@+id/ip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:ems="10"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:hint="IP"
-                    android:text="@={viewmodel.ip}"
-                    android:inputType="textPersonName"
-                    android:selectAllOnFocus="false"
-                    android:singleLine="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.496"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.002"
+            <EditText
+                android:id="@+id/ip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:ems="10"
+                android:gravity="center_horizontal|center_vertical"
+                android:hint="IP"
+                android:text="@={viewmodel.ip}"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                android:singleLine="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.002"
 
-                    />
+                />
 
-                <EditText
-                    android:id="@+id/port"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:inputType="textPersonName"
-                    android:text="@={viewmodel.port}"
-                    android:hint="PORT"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.496"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ip" />
+            <EditText
+                android:id="@+id/port"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:gravity="center_horizontal|center_vertical"
+                android:inputType="textPersonName"
+                android:text="@={viewmodel.port}"
+                android:hint="PORT"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ip" />
 
-                <Button
-                    android:id="@+id/connect"
-                    android:layout_width="324dp"
-                    android:layout_height="35dp"
-                    android:layout_margin="43dp"
-                    android:gravity="center"
-                    android:text="connect"
-                    android:onClick="@{()->viewmodel.connect()}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.501"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/port" />
+            <Button
+                android:id="@+id/connect"
+                android:layout_width="324dp"
+                android:layout_height="35dp"
+                android:layout_margin="43dp"
+                android:gravity="center"
+                android:text="connect"
+                android:onClick="@{()->viewmodel.connect()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/port"
+                android:layout_gravity="center_horizontal"
 
-                <com.example.flightsimulatorjoistick.WheelSeekBar
-                    android:id="@+id/RudderSeekBar"
-                    android:layout_width="403dp"
-                    android:layout_height="79dp"
-                    android:layout_marginBottom="16dp"
-                    android:max="100"
-                    android:progress="50"
-                    android:rotationX="0"
-                    app:layout_constraintBottom_toTopOf="@+id/joystick"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                />
 
-                <LinearLayout
+            <com.example.flightsimulatorcontroller.WheelSeekBar
+                android:id="@+id/RudderSeekBar"
+                android:layout_width="403dp"
+                android:layout_height="79dp"
+                android:layout_marginBottom="16dp"
+                android:max="100"
+                android:progress="50"
+                android:rotationX="0"
+                app:layout_constraintBottom_toTopOf="@+id/joystick"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <com.lukelorusso.verticalseekbar.VerticalSeekBar
+                    android:id="@+id/throttleSeekBar"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    app:vsb_bar_background="@color/bottomScreenColor"
+                    app:vsb_bar_corner_radius="30dp"
+                    app:vsb_bar_progress_gradient_end="#615454"
+                    app:vsb_bar_progress_gradient_start="#EC0505"
+                    app:vsb_bar_width="60dp"
+                    app:vsb_click_to_set_progress="true"
+                    app:vsb_max_placeholder_position="inside"
+                    app:vsb_min_placeholder_position="inside"
+                    app:vsb_progress="0"
+                    app:vsb_show_thumb="true"
+                    app:vsb_thumb_container_corner_radius="5dp"
+                    app:vsb_use_thumb_to_set_progress="true" />
+
+                <com.example.flightsimulatorcontroller.Joystick
+                    android:id="@+id/joystick"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="5dp">
-
-                    <com.lukelorusso.verticalseekbar.VerticalSeekBar
-                        android:id="@+id/throttleSeekBar"
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        app:vsb_bar_background="@color/bottomScreenColor"
-                        app:vsb_bar_corner_radius="30dp"
-                        app:vsb_bar_progress_gradient_end="#615454"
-                        app:vsb_bar_progress_gradient_start="#EC0505"
-                        app:vsb_bar_width="60dp"
-                        app:vsb_click_to_set_progress="true"
-                        app:vsb_max_placeholder_position="inside"
-                        app:vsb_min_placeholder_position="inside"
-                        app:vsb_progress="0"
-                        app:vsb_show_thumb="true"
-                        app:vsb_thumb_container_corner_radius="5dp"
-                        app:vsb_use_thumb_to_set_progress="true" />
-
-                    <com.example.flightsimulatorjoistick.Joystick
-                        android:id="@+id/joystick"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-
-                        />
-                </LinearLayout>>
+                    />
+            </LinearLayout>>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

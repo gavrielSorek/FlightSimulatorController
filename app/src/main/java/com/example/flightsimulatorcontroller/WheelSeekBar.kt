@@ -1,4 +1,4 @@
-package com.example.flightsimulatorjoistick
+package com.example.flightsimulatorcontroller
 
 import android.R
 import android.content.Context
@@ -38,14 +38,14 @@ class WheelSeekBar : androidx.appcompat.widget.AppCompatSeekBar {
         //c.drawLine(this.scaleX, )
         //c.drawCircle(this., pivotY,250f,wheelPaint)
     }
-private fun updatePaint(){
-    wheelPaint = Paint()
-    wheelPaint!!.setColor(Color.BLUE)
-    wheelPaint!!.setAntiAlias(true)
-    wheelPaint!!.setStrokeWidth(5F)
-    wheelPaint!!.setStyle(Paint.Style.FILL_AND_STROKE)
-    wheelPaint!!.setStrokeJoin(Paint.Join.ROUND)
-    wheelPaint!!.setStrokeCap(Paint.Cap.ROUND)
-}
+    private fun updatePaint(){
+        wheelPaint = Paint()
+        wheelPaint!!.setColor(Color.BLUE)
+        wheelPaint!!.setAntiAlias(true)
+        wheelPaint!!.setStrokeWidth(5F)
+        wheelPaint!!.setStyle(Paint.Style.FILL_AND_STROKE)
+        wheelPaint!!.setStrokeJoin(Paint.Join.ROUND)
+        wheelPaint!!.setStrokeCap(Paint.Cap.ROUND)
+    }
 
 }

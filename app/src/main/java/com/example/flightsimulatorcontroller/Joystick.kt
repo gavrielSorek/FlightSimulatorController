@@ -1,4 +1,4 @@
-package com.example.flightsimulatorjoistick
+package com.example.flightsimulatorcontroller
 
 import android.content.Context
 import android.graphics.*
@@ -27,7 +27,7 @@ class Joystick : View {
     }
 
     constructor(context: Context?) : super(context!!) {
-        radius = width/6F
+        radius = minOf(width,height)/6F
         xCenter = width/2F
         yCenter = height/2F
         setupPaint()
@@ -37,19 +37,19 @@ class Joystick : View {
         attrs,
         defStyle
     ) {
-    radius = width/6F
-    xCenter = width/2F
-    yCenter = height/2F
+        radius = minOf(width,height)/6F
+        xCenter = width/2F
+        yCenter = height/2F
         setupPaint()}
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {
-        radius = width/6F
+        radius = minOf(width,height)/6F
         xCenter = width/2F
         yCenter = height/2F
         setupPaint()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        radius = width/6F
+        radius = minOf(width,height)/6F
         xCenter = width/2F
         yCenter = height/2F
         super.onSizeChanged(h, w, oldh, oldw)
@@ -91,7 +91,7 @@ class Joystick : View {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         //validate radius and circle center
-        radius = width/6F
+        radius = minOf(width,height)/6F
         xCenter = width/2F
         yCenter = height/2F
         if (!isEnabled) {
@@ -120,9 +120,9 @@ class Joystick : View {
     //convert to number in range [-1,1] accordingly to xPosition
     private fun convertToRatioX(xPos: Float): Float {
 
-       var currentXPos = validXPos(xPos + xCenter)
+        var currentXPos = validXPos(xPos + xCenter)
         //println("currentXPos: ${currentXPos}, xCenter: ${xCenter}, radius: ${radius}")
-       return (currentXPos - xCenter)/(xCenter - radius)
+        return (currentXPos - xCenter)/(xCenter - radius)
     }
     private fun convertToRatioY(yPos: Float): Float  {
         var currentYPos = validYPos(yPos + yCenter)

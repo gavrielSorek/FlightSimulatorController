@@ -1,2 +1,2 @@
-rootProject.name = "FlightSimulatorJoystick"
+rootProject.name = "FlightSimulatorController"
 include ':app'

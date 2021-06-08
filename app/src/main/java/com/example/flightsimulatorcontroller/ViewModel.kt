@@ -1,6 +1,4 @@
-package com.example.flightsimulatorjoistick
-
-
+package com.example.flightsimulatorcontroller
 
 class ViewModel constructor(model :Model) {
     var ip: String = ""

@@ -1,4 +1,4 @@
-package com.example.flightsimulatorjoistick
+package com.example.flightsimulatorcontroller
 
 import org.junit.Test
 

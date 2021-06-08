@@ -1,11 +1,17 @@
-package com.example.flightsimulatorjoistick
+package com.example.flightsimulatorcontroller
 
+import android.content.Context
+import android.widget.Toast
 import java.io.DataOutputStream
 import java.net.Socket
 import java.util.concurrent.Executors
 
 class Model {
     private var socket : Socket? = null
+    var errorHandler : (() -> Unit)? = null
+    set(value) {         // setter
+        field = value
+    }
     //private lateinit var dataOutputStream: DataOutputStream
     private val executor = Executors.newSingleThreadExecutor()
     fun connect(ip: String,port: String) {
@@ -21,14 +27,16 @@ class Model {
                 }
             }
             catch (ex: Exception){
+                errorHandler?.let { it() }
+                //Toast.makeText(context,"The text you want to display",Toast.LENGTH_LONG)
                 println("exception")
             }
         })
     }
     fun disconnect() {
         executor.execute(Runnable {
-                this.socket?.close()
-                this.socket = null
+            this.socket?.close()
+            this.socket = null
         })
     }
 

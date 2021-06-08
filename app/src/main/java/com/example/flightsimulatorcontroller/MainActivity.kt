@@ -1,25 +1,24 @@
-package com.example.flightsimulatorjoistick
+package com.example.flightsimulatorcontroller
+
 
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
-import android.view.View
 import android.view.View.OnTouchListener
-import android.widget.Button
+import android.view.Window
 import android.widget.SeekBar
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.flightsimulatorjoistick.databinding.ActivityMainBinding
-import kotlin.reflect.KFunction
+import com.example.flightsimulatorcontroller.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private var viewModel: ViewModel = ViewModel(Model())
+    private var model = Model()
+    private var viewModel: ViewModel = ViewModel(model)
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -31,15 +30,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        model.errorHandler = {
+            startActivity(Intent(this@MainActivity, ErrorWindow::class.java))
+        }
 
-
-        //binding
-//        findViewById<TextView>(R.id.ip).apply {
-//            text = viewModel.ip
-//        }
-//        findViewById<TextView>(R.id.port).apply {
-//            text = viewModel.port
-//        }
 
         //rudder
         var rudderSeekBar = findViewById<SeekBar>(R.id.RudderSeekBar)
@@ -65,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.aileron = aileron
         viewModel.elevator = -1*elevator
-       // println("ailron is: ${aileron} elevator is: ${elevator}")
+        // println("ailron is: ${aileron} elevator is: ${elevator}")
 
     }
 
