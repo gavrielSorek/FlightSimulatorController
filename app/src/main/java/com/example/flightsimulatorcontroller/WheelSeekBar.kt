@@ -35,8 +35,7 @@ class WheelSeekBar : androidx.appcompat.widget.AppCompatSeekBar {
 
 
         super.onDraw(c)
-        //c.drawLine(this.scaleX, )
-        //c.drawCircle(this., pivotY,250f,wheelPaint)
+        //c.drawCircle(this.thumb.bounds.exactCenterX(), this.thumb.bounds.exactCenterY(),30f,wheelPaint)
     }
     private fun updatePaint(){
         wheelPaint = Paint()

@@ -77,15 +77,17 @@
 
             <com.example.flightsimulatorcontroller.WheelSeekBar
                 android:id="@+id/RudderSeekBar"
-                android:layout_width="403dp"
+                android:layout_width="match_parent"
                 android:layout_height="79dp"
                 android:layout_marginBottom="16dp"
                 android:max="100"
                 android:progress="50"
                 android:rotationX="0"
+                android:progressTint="@android:color/transparent"
                 app:layout_constraintBottom_toTopOf="@+id/joystick"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
