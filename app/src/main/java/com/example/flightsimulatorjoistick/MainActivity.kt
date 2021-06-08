@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             true
         })
 
+        //var connectButton = findViewById<Button>(R.id.connect)
 
     }
     private fun joystickOnChange(aileron: Float, elevator: Float) {

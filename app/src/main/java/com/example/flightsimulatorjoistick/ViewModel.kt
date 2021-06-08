@@ -4,7 +4,6 @@ package com.example.flightsimulatorjoistick
 
 class ViewModel constructor(model :Model) {
     var ip: String = ""
-
     var port: String = ""
     var throttle :Float = 0.0F
         set(value) {         // setter
@@ -28,8 +27,13 @@ class ViewModel constructor(model :Model) {
         }
     var model: Model = model
     fun connect(){
+
         //view.findViewById<Button>(R.id.connect).text = ip
         model.connect(ip.toString(),port.toString())
+
+    }
+    fun disconnect(){
+        model.disconnect()
 
     }
 
