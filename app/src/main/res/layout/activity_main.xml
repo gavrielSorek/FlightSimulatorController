@@ -72,7 +72,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/port" />
 
-                <SeekBar
+                <com.example.flightsimulatorjoistick.WheelSeekBar
                     android:id="@+id/RudderSeekBar"
                     android:layout_width="403dp"
                     android:layout_height="79dp"
@@ -89,19 +89,23 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_marginBottom="5dp">
-                    <com.example.flightsimulatorjoistick.VerticalSeekBar
+
+                    <com.lukelorusso.verticalseekbar.VerticalSeekBar
                         android:id="@+id/throttleSeekBar"
-                        style="@style/Widget.AppCompat.SeekBar.Discrete"
-                        android:layout_width="35dp"
+                        android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:visibility="visible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.882"
-                        android:layout_marginBottom="8dp"/>
+                        app:vsb_bar_background="@color/bottomScreenColor"
+                        app:vsb_bar_corner_radius="30dp"
+                        app:vsb_bar_progress_gradient_end="#615454"
+                        app:vsb_bar_progress_gradient_start="#EC0505"
+                        app:vsb_bar_width="60dp"
+                        app:vsb_click_to_set_progress="true"
+                        app:vsb_max_placeholder_position="inside"
+                        app:vsb_min_placeholder_position="inside"
+                        app:vsb_progress="0"
+                        app:vsb_show_thumb="true"
+                        app:vsb_thumb_container_corner_radius="5dp"
+                        app:vsb_use_thumb_to_set_progress="true" />
 
                     <com.example.flightsimulatorjoistick.Joystick
                         android:id="@+id/joystick"

@@ -131,7 +131,7 @@ class Joystick : View {
     }
     private fun setupPaint() {
         paintCircle = Paint()
-        paintCircle!!.setColor(Color.BLUE)
+        paintCircle!!.setColor(Color.BLACK)
         paintCircle!!.setAntiAlias(true)
         paintCircle!!.setStrokeWidth(5F)
         paintCircle!!.setStyle(Paint.Style.FILL_AND_STROKE)
@@ -139,7 +139,7 @@ class Joystick : View {
         paintCircle!!.setStrokeCap(Paint.Cap.ROUND)
 
         paintLine = Paint()
-        paintLine!!.setColor(Color.BLACK)
+        paintLine!!.setColor(Color.DKGRAY)
         paintLine!!.setAntiAlias(true)
         paintLine!!.setStrokeWidth(10F)
         paintLine!!.setStyle(Paint.Style.FILL_AND_STROKE)

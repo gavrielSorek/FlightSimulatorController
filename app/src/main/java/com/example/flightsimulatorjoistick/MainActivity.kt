@@ -40,18 +40,6 @@ class MainActivity : AppCompatActivity() {
 //        findViewById<TextView>(R.id.port).apply {
 //            text = viewModel.port
 //        }
-        var throttleSeekBar = findViewById<SeekBar>(R.id.throttleSeekBar)
-        //throttle listener
-        throttleSeekBar.setOnTouchListener(OnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_MOVE) {
-                viewModel.throttle = (throttleSeekBar.progress.toFloat() / 100)
-                //connectText.text = throttleSeekBar.progress.toString()
-                return@OnTouchListener false
-            }
-            true
-        })
-        var joystick = findViewById<Joystick>(R.id.joystick)
-        joystick.joystickChangedAddFunction(::joystickOnChange)
 
         //rudder
         var rudderSeekBar = findViewById<SeekBar>(R.id.RudderSeekBar)
@@ -65,6 +53,13 @@ class MainActivity : AppCompatActivity() {
 
         //var connectButton = findViewById<Button>(R.id.connect)
 
+        //set listeners
+        var throttleSeekBar = findViewById<com.lukelorusso.verticalseekbar.VerticalSeekBar>(R.id.throttleSeekBar)
+        throttleSeekBar.setOnProgressChangeListener{progress -> viewModel.throttle = (progress.toFloat() / 100) }
+
+        var joystick = findViewById<Joystick>(R.id.joystick)
+        joystick.joystickChangedAddFunction(::joystickOnChange)
+
     }
     private fun joystickOnChange(aileron: Float, elevator: Float) {
 
@@ -72,6 +67,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.elevator = -1*elevator
        // println("ailron is: ${aileron} elevator is: ${elevator}")
 
-
     }
+
 }
