@@ -20,11 +20,7 @@ class Joystick : View {
     //var onChange : KFunction<Any>? = null
     //var paramsHolder : Array<out Any?> ?= null
     //hold observer that execute when joystick moves
-    private  var onChange : (param1 :Float, param2:Float) -> Unit = { fl: Float, fl1: Float -> }
-
-    fun joystickChangedAddFunction(func :(param1 :Float, param2:Float) -> Unit) {
-        onChange = func;
-    }
+    var onChange : (param1 :Float, param2:Float) -> Unit = { fl: Float, fl1: Float -> }
 
     constructor(context: Context?) : super(context!!) {
         radius = minOf(width,height)/6F

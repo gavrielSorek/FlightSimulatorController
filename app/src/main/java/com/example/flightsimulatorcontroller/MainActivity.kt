@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         throttleSeekBar.setOnProgressChangeListener{progress -> viewModel.throttle = (progress.toFloat() / 100) }
 
         var joystick = findViewById<Joystick>(R.id.joystick)
-        joystick.joystickChangedAddFunction(::joystickOnChange)
+        joystick.onChange = ::joystickOnChange
 
     }
     private fun joystickOnChange(aileron: Float, elevator: Float) {

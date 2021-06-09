@@ -15,7 +15,6 @@ class ErrorWindow : Activity() {
         var width = dm.widthPixels
         var height = dm.heightPixels
         window.setLayout((width*0.5).toInt(), (height*0.5).toInt())
-
     }
 
 }
