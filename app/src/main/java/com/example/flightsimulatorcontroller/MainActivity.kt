@@ -36,7 +36,10 @@ class MainActivity : AppCompatActivity() {
 
 
         //rudder
+
         var rudderSeekBar = findViewById<SeekBar>(R.id.RudderSeekBar)
+
+        rudderSeekBar.setPadding(65,0,65,0);
         rudderSeekBar.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_MOVE) {
                 viewModel.rudder = ((rudderSeekBar.progress.toFloat() / 50)-1)

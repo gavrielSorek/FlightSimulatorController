@@ -75,7 +75,7 @@
 
                 />
 
-            <com.example.flightsimulatorcontroller.WheelSeekBar
+            <SeekBar
                 android:id="@+id/RudderSeekBar"
                 android:layout_width="match_parent"
                 android:layout_height="79dp"
@@ -84,6 +84,7 @@
                 android:progress="50"
                 android:rotationX="0"
                 android:progressTint="@android:color/transparent"
+                android:thumb="@drawable/wheel4"
                 app:layout_constraintBottom_toTopOf="@+id/joystick"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
