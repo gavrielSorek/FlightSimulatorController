@@ -1,8 +1,6 @@
 package com.example.flightsimulatorcontroller
 
-import android.content.Context
-import android.widget.Toast
-import java.io.DataOutputStream
+import java.net.InetAddress
 import java.net.Socket
 import java.util.concurrent.Executors
 
@@ -17,6 +15,10 @@ class Model {
     fun connect(ip: String,port: String) {
         executor.execute(Runnable {
             try{
+                val address = InetAddress.getByName(ip)
+                val reachable = address.isReachable(7000)
+                if(!reachable) //if server not responding in 7 sec
+                    throw Exception("can't connect to server ")
                 if(this.socket == null) { //in new socket
                     println("ip ${ip}, port: ${port}")
                     this.socket = Socket(ip, port.toInt())
@@ -28,7 +30,6 @@ class Model {
             }
             catch (ex: Exception){
                 errorHandler?.let { it() }
-                //Toast.makeText(context,"The text you want to display",Toast.LENGTH_LONG)
                 println("exception")
             }
         })
