@@ -1,9 +1,10 @@
-package com.example.flightsimulatorcontroller
+package com.example.flightsimulatorcontroller.views
 
 import android.app.Activity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Window
+import com.example.flightsimulatorcontroller.R
 
 class ErrorWindow : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

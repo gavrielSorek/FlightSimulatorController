@@ -1,6 +1,8 @@
-package com.example.flightsimulatorcontroller
+package com.example.flightsimulatorcontroller.view_model
 
-class ViewModel constructor(model :Model) {
+import com.example.flightsimulatorcontroller.model.Model
+
+class ViewModel constructor(model : Model) {
     var ip: String = ""
     var port: String = ""
     var throttle :Float = 0.0F

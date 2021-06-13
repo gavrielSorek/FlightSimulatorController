@@ -1,4 +1,4 @@
-package com.example.flightsimulatorcontroller
+package com.example.flightsimulatorcontroller.views
 
 
 import android.annotation.SuppressLint
@@ -10,6 +10,9 @@ import android.view.Window
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.flightsimulatorcontroller.model.Model
+import com.example.flightsimulatorcontroller.R
+import com.example.flightsimulatorcontroller.view_model.ViewModel
 import com.example.flightsimulatorcontroller.databinding.ActivityMainBinding
 
 

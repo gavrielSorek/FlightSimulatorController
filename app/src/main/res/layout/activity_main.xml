@@ -5,12 +5,12 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.flightsimulatorcontroller.ViewModel" />
+            type="com.example.flightsimulatorcontroller.view_model.ViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        tools:context=".MainActivity"
+        tools:context=".views.MainActivity"
         android:background="@color/openScreenColor"
         android:orientation="vertical"
         >
@@ -31,10 +31,10 @@
                 android:ems="10"
                 android:gravity="center_horizontal|center_vertical"
                 android:hint="IP"
-                android:text="@={viewmodel.ip}"
                 android:inputType="textPersonName"
                 android:selectAllOnFocus="false"
                 android:singleLine="true"
+                android:text="@={viewmodel.ip}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
@@ -75,6 +75,7 @@
 
                 />
 
+
             <SeekBar
                 android:id="@+id/RudderSeekBar"
                 android:layout_width="match_parent"
@@ -113,7 +114,7 @@
                     app:vsb_thumb_container_corner_radius="5dp"
                     app:vsb_use_thumb_to_set_progress="true" />
 
-                <com.example.flightsimulatorcontroller.Joystick
+                <com.example.flightsimulatorcontroller.views.Joystick
                     android:id="@+id/joystick"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

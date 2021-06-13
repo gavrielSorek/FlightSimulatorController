@@ -1,4 +1,4 @@
-package com.example.flightsimulatorcontroller
+package com.example.flightsimulatorcontroller.views
 
 import android.content.Context
 import android.graphics.*
