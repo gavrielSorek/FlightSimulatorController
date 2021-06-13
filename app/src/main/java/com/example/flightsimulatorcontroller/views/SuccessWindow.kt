@@ -1,5 +1,4 @@
 package com.example.flightsimulatorcontroller.views
-
 import android.app.Activity
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -7,11 +6,11 @@ import android.view.Window
 import com.example.flightsimulatorcontroller.R
 import java.util.*
 
-class ErrorWindow : Activity() {
+class SuccessWindow : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.error_window)
+        setContentView(R.layout.success_window)
         var dm = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(dm)
         var width = dm.widthPixels
@@ -24,7 +23,7 @@ class ErrorWindow : Activity() {
                 finish()
             }
         }
-        timer.scheduleAtFixedRate(t, 1500, 1500)
+        timer.scheduleAtFixedRate(t, 1000, 1000)
 
     }
 

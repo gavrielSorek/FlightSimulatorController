@@ -32,9 +32,11 @@ class MainActivity : AppCompatActivity() {
             this.viewmodel = viewModel
         }
 
-
         model.errorHandler = {
             startActivity(Intent(this@MainActivity, ErrorWindow::class.java))
+        }
+        model.successHandler = {
+            startActivity(Intent(this@MainActivity, SuccessWindow::class.java))
         }
 
 

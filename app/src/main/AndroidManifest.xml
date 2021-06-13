@@ -23,6 +23,11 @@
             android:screenOrientation="portrait"
             >
         </activity>
+        <activity android:name=".views.SuccessWindow"
+            android:theme="@style/ThemeCustomTheme"
+            android:screenOrientation="portrait"
+            >
+        </activity>
     </application>
 
 </manifest>

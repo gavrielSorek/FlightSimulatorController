@@ -12,6 +12,10 @@ class Model {
     set(value) {         // setter
         field = value
     }
+    var successHandler : (() -> Unit)? = null
+        set(value) {         // setter
+            field = value
+        }
     //private lateinit var dataOutputStream: DataOutputStream
     private val executor = Executors.newSingleThreadExecutor()
     fun connect(ip: String,port: String) {
@@ -21,13 +25,15 @@ class Model {
                 if(this.socket == null) { //in new socket
                     println("ip ${ip}, port: ${port}")
                     this.socket = Socket()
-                    this.socket!!.connect(InetSocketAddress(ip, port.toInt()), 6000)
+                    this.socket!!.connect(InetSocketAddress(ip, port.toInt()), 5000)
+                    successHandler?.let { it() }
 
                 }else { //close the old connection
                     this.socket?.close()
                     println("ip ${ip}, port: ${port}")
                     this.socket = Socket()
-                    this.socket!!.connect(InetSocketAddress(ip, port.toInt()), 6000)
+                    this.socket!!.connect(InetSocketAddress(ip, port.toInt()), 5000)
+                    successHandler?.let { it() }
                 }
             }
             catch (ex: Exception){
@@ -47,7 +53,6 @@ class Model {
 
 
     fun setThrottle(value: Float) {
-
         executor.execute(Runnable {
             try {
                 println("throttle is :${value}")
