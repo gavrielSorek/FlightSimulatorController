@@ -92,7 +92,7 @@
                 android:progress="50"
                 android:rotationX="0"
                 android:progressTint="@android:color/transparent"
-                android:thumb="@drawable/wheel9"
+                android:thumb="@drawable/wheel10"
                 app:layout_constraintBottom_toTopOf="@+id/joystick"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
