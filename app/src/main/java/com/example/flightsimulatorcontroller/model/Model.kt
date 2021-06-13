@@ -1,5 +1,6 @@
 package com.example.flightsimulatorcontroller.model
 
+import java.net.InetAddress
 import java.net.Socket
 import java.util.concurrent.Executors
 

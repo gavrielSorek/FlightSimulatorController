@@ -76,6 +76,13 @@
                 />
 
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Rudder" />
+
             <SeekBar
                 android:id="@+id/RudderSeekBar"
                 android:layout_width="match_parent"
@@ -90,6 +97,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Throttle" />
 
             <LinearLayout
                 android:layout_width="match_parent"

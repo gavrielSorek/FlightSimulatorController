@@ -57,6 +57,7 @@ class Joystick : View {
         setMeasuredDimension(measuredHeight, measuredWidth)
     }
 
+    //return valid x position accordingly to xPosition and screen size
     fun validXPos(xPosition: Float): Float {
         if(xPosition < radius) {
             return radius;
@@ -67,6 +68,7 @@ class Joystick : View {
             return xPosition;
         }
     }
+    //return valid y position accordingly to xPosition and screen size
     fun validYPos(yPosition: Float): Float {
         if(yPosition < radius) {
             return radius;
@@ -120,6 +122,7 @@ class Joystick : View {
         //println("currentXPos: ${currentXPos}, xCenter: ${xCenter}, radius: ${radius}")
         return (currentXPos - xCenter)/(xCenter - radius)
     }
+    //convert to number in range [-1,1] accordingly to yPosition
     private fun convertToRatioY(yPos: Float): Float  {
         var currentYPos = validYPos(yPos + yCenter)
         //println("currentYPos: ${currentYPos}, yCenter: ${yCenter}, radius: ${radius}")
