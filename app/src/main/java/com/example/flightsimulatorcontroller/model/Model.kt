@@ -1,8 +1,10 @@
 package com.example.flightsimulatorcontroller.model
 
-import java.net.InetAddress
+import android.R.attr
+import java.net.InetSocketAddress
 import java.net.Socket
 import java.util.concurrent.Executors
+
 
 class Model {
     private var socket : Socket? = null
@@ -15,20 +17,21 @@ class Model {
     fun connect(ip: String,port: String) {
         executor.execute(Runnable {
             try{
-//                val address = InetAddress.getByName(ip)
-//                val reachable = address.isReachable(7000)
-//                if(!reachable) //if server not responding in 7 sec
-//                    throw Exception("can't connect to server ")
+
                 if(this.socket == null) { //in new socket
                     println("ip ${ip}, port: ${port}")
-                    this.socket = Socket(ip, port.toInt())
+                    this.socket = Socket()
+                    this.socket!!.connect(InetSocketAddress(ip, port.toInt()), 6000)
+
                 }else { //close the old connection
                     this.socket?.close()
                     println("ip ${ip}, port: ${port}")
-                    this.socket = Socket(ip, port.toInt())
+                    this.socket = Socket()
+                    this.socket!!.connect(InetSocketAddress(ip, port.toInt()), 6000)
                 }
             }
             catch (ex: Exception){
+                this.socket = null
                 errorHandler?.let { it() }
                 println("exception")
             }
