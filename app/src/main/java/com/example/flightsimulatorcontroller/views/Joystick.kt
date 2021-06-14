@@ -5,8 +5,6 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import kotlin.reflect.KFunction
-
 
 class Joystick : View {
 
@@ -17,9 +15,6 @@ class Joystick : View {
     var yAlias : Float= 0f
     lateinit var paintLine :Paint;
     lateinit var paintCircle :Paint;
-    //var onChange : KFunction<Any>? = null
-    //var paramsHolder : Array<out Any?> ?= null
-    //hold observer that execute when joystick moves
     var onChange : (param1 :Float, param2:Float) -> Unit = { fl: Float, fl1: Float -> }
 
     constructor(context: Context?) : super(context!!) {
@@ -56,9 +51,8 @@ class Joystick : View {
         super.onMeasure(heightMeasureSpec, widthMeasureSpec)
         setMeasuredDimension(measuredHeight, measuredWidth)
     }
-
     //return valid x position accordingly to xPosition and screen size
-    fun validXPos(xPosition: Float): Float {
+    private fun validXPos(xPosition: Float): Float {
         if(xPosition < radius) {
             return radius;
         }
@@ -68,8 +62,8 @@ class Joystick : View {
             return xPosition;
         }
     }
-    //return valid y position accordingly to xPosition and screen size
-    fun validYPos(yPosition: Float): Float {
+    //return valid y position accordingly to yPosition and screen size
+    private fun validYPos(yPosition: Float): Float {
         if(yPosition < radius) {
             return radius;
         }
@@ -98,7 +92,6 @@ class Joystick : View {
         when (event.action) {
             MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
                 var i = 0
-                //onSizeChanged(width, height, 0, 0)
                 xAlias = event.getX() - xCenter
                 yAlias = event.getY() - yCenter
                 onChange(convertToRatioX(xAlias), convertToRatioY(yAlias))
@@ -119,13 +112,11 @@ class Joystick : View {
     private fun convertToRatioX(xPos: Float): Float {
 
         var currentXPos = validXPos(xPos + xCenter)
-        //println("currentXPos: ${currentXPos}, xCenter: ${xCenter}, radius: ${radius}")
         return (currentXPos - xCenter)/(xCenter - radius)
     }
     //convert to number in range [-1,1] accordingly to yPosition
     private fun convertToRatioY(yPos: Float): Float  {
         var currentYPos = validYPos(yPos + yCenter)
-        //println("currentYPos: ${currentYPos}, yCenter: ${yCenter}, radius: ${radius}")
         return (currentYPos - yCenter)/(yCenter - radius)
     }
     private fun setupPaint() {

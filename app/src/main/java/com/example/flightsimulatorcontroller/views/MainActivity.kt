@@ -41,10 +41,8 @@ class MainActivity : AppCompatActivity() {
 
 
         //rudder
-
         var rudderSeekBar = findViewById<SeekBar>(R.id.RudderSeekBar)
-
-        rudderSeekBar.setPadding(70,0,70,0);
+        rudderSeekBar.setPadding(75,0,75,0);
         rudderSeekBar.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_MOVE) {
                 viewModel.rudder = ((rudderSeekBar.progress.toFloat() / 50)-1)
@@ -52,8 +50,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         })
-
-        //var connectButton = findViewById<Button>(R.id.connect)
 
         //set listeners
         var throttleSeekBar = findViewById<com.lukelorusso.verticalseekbar.VerticalSeekBar>(R.id.throttleSeekBar)
@@ -67,7 +63,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.aileron = aileron
         viewModel.elevator = -1*elevator
-        // println("ailron is: ${aileron} elevator is: ${elevator}")
 
     }
 

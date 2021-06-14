@@ -27,10 +27,7 @@ class ViewModel constructor(model : Model) {
         }
     var model: Model = model
     fun connect(){
-
-        //view.findViewById<Button>(R.id.connect).text = ip
         model.connect(ip.toString(),port.toString())
-
     }
     fun disconnect(){
         model.disconnect()

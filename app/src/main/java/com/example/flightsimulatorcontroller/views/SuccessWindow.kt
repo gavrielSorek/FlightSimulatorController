@@ -24,7 +24,6 @@ class SuccessWindow : Activity() {
             }
         }
         timer.scheduleAtFixedRate(t, 1000, 1000)
-
     }
 
 }
