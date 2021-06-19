@@ -62,7 +62,7 @@ __Installation Instructions:__
 
 *open CMD and insert the command "ipconfig" and copy the  "IPv4 Address"  ( 192.168.X.X || 10.0.0.X)
 
-4)You can run the android apllication with this github repositiry from "android studio" or you can install the application on your android phone via the .apk file from [this link](https://github.com/gavrielSorek/FlightSimulatorController/blob/main/install%20file/flight_simulator_controller.apk)
+4)You can run the android apllication with this github repositiry from "android studio" or you can install the application on your android phone via the .apk file from [this link](https://github.com/gavrielSorek/FlightSimulatorController/blob/main/install%20file)
 
 5)	Open the android apllication on your android device.
 
