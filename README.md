@@ -56,7 +56,7 @@ __Installation Instructions:__
 
 2)	Update the FlightGear's settings: 
 
-
+--telnet=socket,in,10,127.0.0.1,6400,tcp
 
 3) Check your local IP address on the FG server machine:
 
