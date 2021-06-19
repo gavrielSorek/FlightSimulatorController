@@ -20,10 +20,6 @@ __Application main screen:__
 
 
 
-__Application features:__
-
-
-
 
 
 __Project Structure:__
@@ -72,5 +68,4 @@ __Installation Instructions:__
 
 __UML and MVVM design pattern:__
 
-
-![UML picture](https://user-images.githubusercontent.com/58228085/122650014-38219c80-d139-11eb-9677-13f8b74ef3a4.png)
+![UML picture](https://user-images.githubusercontent.com/58228085/122650172-0bba5000-d13a-11eb-934f-185519db959e.png)
