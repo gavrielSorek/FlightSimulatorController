@@ -13,8 +13,8 @@ You can find [here](TODO ADD VIDRIO) the video of the projec.
 
 
 __Application main screen:__
-![openScreen](TODO ADD photo)
 
+![open screen](https://user-images.githubusercontent.com/58228085/122649520-cf392500-d136-11eb-8ab1-75949bb6cbf2.png)
 
 
 
@@ -28,7 +28,7 @@ __Application features:__
 
 __Project Structure:__
 
-![folders picture](ADDPHOTO)
+![folders structure](https://user-images.githubusercontent.com/58228085/122649596-322abc00-d137-11eb-9eb1-fd2f35b396bc.png)
 
 1)	View – 
 responsible of the view of each component (Main activity, Joystick ,ErrorWindow and SuccessWindow).
@@ -72,21 +72,5 @@ __Installation Instructions:__
 
 __UML and MVVM design pattern:__
 
-![uml picture](TODO ADD)
 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![UML picture](https://user-images.githubusercontent.com/58228085/122650014-38219c80-d139-11eb-9677-13f8b74ef3a4.png)
