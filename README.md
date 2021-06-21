@@ -1,18 +1,18 @@
 # FlightSimulatorController
 
-__Introduction:__
+_Introduction:_
 
-This project is a android application which represents a flight gear controller. 
-With this application we can control the plan on the FlightGear desktop app.
+This project is an android application which represents a flight gear controller. 
+With this application we can control the aircraft on the FlightGear desktop app..
 
-__Video demonstration:__
+_Video demonstration:_
 
-You can find [here](TODO ADD VIDRIO) the video of the projec.
+You can find [here](TODO ADD VIDRIO) the video of the project.
  
 
 
 
-__Application main screen:__
+_Application main screen:_
 
 ![open screen](https://user-images.githubusercontent.com/58228085/122649520-cf392500-d136-11eb-8ab1-75949bb6cbf2.png)
 
@@ -22,20 +22,20 @@ __Application main screen:__
 
 
 
-__Project Structure:__
+_Project Structure:_
 
 ![folders structure](https://user-images.githubusercontent.com/58228085/122649596-322abc00-d137-11eb-9eb1-fd2f35b396bc.png)
 
 1)	View – 
-responsible of the view of each component (Main activity, Joystick ,ErrorWindow and SuccessWindow).
+The view responsible of the visual representation of each component (Main activity, Joystick ,ErrorWindow and SuccessWindow).
 Each logical part has a view model of its own.
 2)	Model –
-the main and only model of the project, implements the MVVM design pattern and its responsible of the business logic of the project.
-Contains the logic parts of the application that is being used at the view models.
+The main and only model of the project implements the MVVM design pattern and it is responsible of the business logic of the project.
+It contains the logic parts of the application which is being used in the view models.
 3)	ViewModel-
 this folder contains the view models of each logical part as mentioned above. the class connects the model to the view.  
 
-__Installation requirements:__
+_Installation requirements:_
 
 •	Frameworks:
 1) Android phone -version: android 11 and above.
@@ -45,7 +45,7 @@ __Installation requirements:__
 •	Applications:
 1)	FlightGear application 
 
-__Installation Instructions:__
+_Installation Instructions:_
 
 
 1) Open the FlighGear application
@@ -66,6 +66,6 @@ __Installation Instructions:__
 
 
 
-__UML and MVVM design pattern:__
+_UML and MVVM design pattern:_
 
 ![UML picture](https://user-images.githubusercontent.com/58228085/122650172-0bba5000-d13a-11eb-934f-185519db959e.png)
