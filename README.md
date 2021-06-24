@@ -7,7 +7,7 @@ With this application we can control the aircraft on the FlightGear desktop app.
 
 ### _Video demonstration:_
 
-You can find [here](TODO ADD VIDRIO) the video of the project.
+You can find [here](https://www.youtube.com/watch?v=rHIkL8D5Dlk&ab_channel=RoyMechany) the video of the project.
  
 
 
