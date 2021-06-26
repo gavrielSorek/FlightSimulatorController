@@ -69,7 +69,7 @@ this folder contains the view models of each logical part as mentioned above. th
 
 
 After lanuch our app:
-* please note that you must to be at the same netwotk with your flightGear server to conrtorl the simulator or you can set a public IP that can be accessible from every network.
+* please note that you must to be at the same network with your FlightGear server to control the simulator or you can set a public IP that can be accessible from every network
 1)	insert your server FlightGear simulator local IPV4 address 
 2)	insert port 6400 
 3) press connect
