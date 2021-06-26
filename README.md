@@ -61,13 +61,19 @@ this folder contains the view models of each logical part as mentioned above. th
 
 3) Check your local IP address on the FG server machine:
 
-*open CMD and insert the command "ipconfig" and copy the  "IPv4 Address"  ( 192.168.X.X || 10.0.0.X)
+* open CMD and insert the command "ipconfig" and copy the  "IPv4 Address"  ( 192.168.X.X || 10.0.0.X)
 
-4)You can run the android apllication with this github repositiry from "android studio" or you can install the application on your android phone via the .apk file from [this link](https://github.com/gavrielSorek/FlightSimulatorController/blob/main/install%20file)
+4) You can run the android apllication with this github repositiry from "android studio" or you can install the application on your android phone via the .apk file from [this link](https://github.com/gavrielSorek/FlightSimulatorController/blob/main/install%20file)
 
 5)	Open the android apllication on your android device.
 
 6)	Launch  our app!
+
+After lanuch our app:
+1)	insert your public IPV4 address
+2)	insert port 6400 
+3) press connect
+4) controll the simulator with the joystick and the seek bars
 
 
 
