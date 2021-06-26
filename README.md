@@ -67,10 +67,10 @@ this folder contains the view models of each logical part as mentioned above. th
 
 5)	Open the android apllication on your android device.
 
-6)	Launch  our app!
 
 After lanuch our app:
-1)	insert your public IPV4 address
+* please note that you must to be at the same netwotk with your flightGear server to conrtorl the simulator or you can set a public IP that can be accessible from every network.
+1)	insert your server FlightGear simulator local IPV4 address 
 2)	insert port 6400 
 3) press connect
 4) controll the simulator with the joystick and the seek bars
@@ -78,4 +78,5 @@ After lanuch our app:
 
 
 ### _UML and MVVM design pattern:_
-![UML picture](https://user-images.githubusercontent.com/58228085/123510470-744a8500-d684-11eb-9072-0c781a735b29.png)
+![UML picture](https://user-images.githubusercontent.com/58228085/123517071-e8e2eb00-d6a7-11eb-91d4-b2a1d25a45de.png)
+
