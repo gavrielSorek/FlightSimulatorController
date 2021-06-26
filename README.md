@@ -62,6 +62,11 @@ this folder contains the view models of each logical part as mentioned above. th
 3) Check your local IP address on the FG server machine:
 
 * open CMD and insert the command "ipconfig" and copy the  "IPv4 Address"  ( 192.168.X.X || 10.0.0.X)
+ ![IP2](https://user-images.githubusercontent.com/58228085/123517475-da95ce80-d6a9-11eb-9da1-0ea249d6d361.png)
+Or
+![IP1](https://user-images.githubusercontent.com/58228085/123517472-cbaf1c00-d6a9-11eb-8796-ce2bca1d7e43.png)
+
+
 
 4) You can run the android apllication with this github repositiry from "android studio" or you can install the application on your android phone via the .apk file from [this link](https://github.com/gavrielSorek/FlightSimulatorController/blob/main/install%20file)
 
@@ -78,5 +83,5 @@ After lanuch our app:
 
 
 ### _UML and MVVM design pattern:_
-![UML picture](https://user-images.githubusercontent.com/58228085/123517071-e8e2eb00-d6a7-11eb-91d4-b2a1d25a45de.png)
+![UML picture](https://user-images.githubusercontent.com/58228085/123517397-57747880-d6a9-11eb-8743-8d1025db0b9c.png)
 
