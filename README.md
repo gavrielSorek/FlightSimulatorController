@@ -78,5 +78,4 @@ After lanuch our app:
 
 
 ### _UML and MVVM design pattern:_
-
-![UML picture](https://user-images.githubusercontent.com/58228085/122650172-0bba5000-d13a-11eb-934f-185519db959e.png)
+![UML picture](https://user-images.githubusercontent.com/58228085/123510470-744a8500-d684-11eb-9072-0c781a735b29.png)
