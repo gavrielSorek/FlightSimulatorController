@@ -32,7 +32,7 @@ The view responsible of the visual representation of each component (Main activi
 The main and only model of the project implements the MVVM design pattern and it is responsible of the business logical of the project.
 It contains the logic parts of the application which is being used in the view models.
 3)	ViewModel-
-this folder contains the view models of each logical part as mentioned above. the class connects the model to the view.  
+this folder contains the view model class. the class connects the model to the view.  
 
 #### _Main calsses in the project:_
 *Main activity - contains all the view components.
